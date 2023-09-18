@@ -1,0 +1,29 @@
+version: "2.3"
+services:
+  jupyterlab-cuda:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BASE_IMAGE: "nvidia/cuda:12.1.0-cudnn8-devel-ubuntu20.04"
+        REQUIREMENTS_FILE: "tkra.requirements.txt"
+    image: "tkra-jupyter-lab-cuda"
+    command: ["/environment/.python_envs/default/bin/python3.7", "-m", "jupyterlab", "--allow-root", "--port=8888", "--ip=0.0.0.0"]
+    # command: ["jupyter", "lab", "--allow-root", "--port=8888", "--ip=0.0.0.0"]
+    container_name: "tkra-jupyter-lab-cuda"
+    runtime: nvidia
+    volumes:
+      - C:\Users\TkrA\Documents\Jupyter-lab:/data
+      # - //Users/tkra/Desktop/Jupyter-lab/:/data
+    working_dir: "/data"
+    shm_size: '32gb'
+    ports:
+      - "3002:8888"
+      - "3003:8265"
+      - "3004:6006"
+      - "3005:8080"  
+    tty: true
+    stdin_open: true
+    privileged: true
+
+

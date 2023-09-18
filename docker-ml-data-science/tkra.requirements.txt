@@ -1,0 +1,90 @@
+--find-links https://download.pytorch.org/whl/nightly/cu118
+Cython
+matplotlib>=3.2.2
+numpy
+opencv-python>=4.1.2
+Pillow
+PyYAML>=5.3.1
+scipy>=1.4.1
+# torch==1.9.1+cu111
+# torchvision==0.10.1+cu111
+# torch==2.1.0.dev20230612+cu118
+# torchvision==0.16.0.dev20230612+cu118
+torch
+torchvision
+tensorboard>=1.5
+tqdm>=4.41.0
+fire
+# elasticsearch
+python-logstash
+logstash_formatter
+pygeohash
+amqpstorm==2.7.2
+h5py
+Pillow
+scipy
+sympy
+# scikit-image
+scikit-learn==0.23.2
+# grpcio==1.49.1
+# grpcio-tools==1.49.1
+protobuf
+requests
+imagesize
+psycopg2-binary
+wget
+more_itertools
+aiohttp
+aiofiles
+geopy
+ipympl
+reverse_geocoder
+arrow 
+shapely
+sqlalchemy
+geographiclib 
+geopy
+PyYAML
+imgaug
+
+# deep_sort -----------------------------------
+easydict
+ipyfilechooser
+Cython
+h5py
+six
+
+future
+yacs
+gdown
+flake8
+yapf
+isort==4.3.21
+imageio
+
+# bytetrack
+# lap
+# git+https://github.com/samson-wang/cython_bbox.git@17a9209162d2107c1d2d17ea66fb2a3c7fa0c73e
+# @9badb346a9222c98f828ba45c63fe3b7f2790ea2
+
+# logging -------------------------------------
+wandb
+
+seaborn>=0.11.0
+pandas
+xgboost
+
+
+# extras --------------------------------------
+thop  # FLOPS computation
+angles
+folium
+timm
+# pycocotools>=2.0.0  # COCO mAP
+
+pyright
+jedi-language-server
+jupyterlab==3.4.2
+jupyterlab-vim
+jupyterlab-lsp
+# python-lsp-server[all]
