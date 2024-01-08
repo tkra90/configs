@@ -1,7 +1,7 @@
 ARG BASE_IMAGE=nvidia/cuda:12.1.0-cudnn8-devel-ubuntu20.04
 FROM ${BASE_IMAGE}
 
-ARG PYTHON=python3.7
+ARG PYTHON=python3.9
 ARG REQUIREMENTS_FILE=requirements.txt
 ENV DEBIAN_FRONTEND=noninteractive
 
