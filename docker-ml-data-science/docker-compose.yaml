@@ -1,4 +1,4 @@
-version: "2.3"
+version: "3"
 services:
   jupyterlab-cuda:
     build:
@@ -11,19 +11,72 @@ services:
     command: ["/environment/.python_envs/default/bin/python3.9", "-m", "jupyterlab", "--allow-root", "--port=8888", "--ip=0.0.0.0"]
     # command: ["jupyter", "lab", "--allow-root", "--port=8888", "--ip=0.0.0.0"]
     container_name: "tkra-jupyter-lab-cuda"
-    runtime: nvidia
+    # runtime: nvidia
     volumes:
-      - C:\Users\TkrA\Documents\Jupyter-lab:/data
-      # - //Users/tkra/Desktop/Jupyter-lab/:/data
+      - //Users/tkra/Desktop/Docker+/:/data
+      # - C:\Users\TkrA\Documents\Jupyter-lab:/data
     working_dir: "/data"
     shm_size: '32gb'
     ports:
       - "3002:8888"
       - "3003:8265"
       - "3004:6006"
-      - "3005:8080"  
+      - "3005:8080" 
+    networks:
+      - tkra
     tty: true
     stdin_open: true
     privileged: true
+
+  mongo:
+    # image: mongodb/atlas
+    image: mongo
+    container_name: "tkra_mongo"
+    restart: unless-stopped
+    privileged: true
+    # command: /bin/bash "./mongo_setup.sh"
+    # environment:
+    #   - MONGO_INITDB_ROOT_USERNAME=root
+    #   - MONGO_INITDB_ROOT_PASSWORD=root
+    volumes:
+      - ./mongo_volume:/var/run/docker.sock
+      - ./mongodb_data:/data/db
+      # - ./mongo_setup.sh:/mongo_setup.sh
+    ports:
+      - 27778:27778
+      - 27017:27017
+    networks:
+      - tkra
+
+  postgres:
+    image: ankane/pgvector
+    container_name: "tkra_postgres"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: Postgrespwd
+      POSTGRES_HOST_AUTH_METHOD: trust
+      # POSTGRES_EXTENSIONS: pg_trgm
+    volumes:
+      - postgrs:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+    networks:
+      - tkra
+
+  adminer:
+    image: adminer
+    container_name: "tkra_adminer"
+    restart: always
+    ports:
+      - 3080:8080
+    networks:
+      - tkra
+
+volumes:
+  postgrs:
+
+networks:
+  tkra:
+    name: tkra_network
 
 
