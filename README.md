@@ -12,7 +12,7 @@
 - [itsycal](https://www.mowglii.com/itsycal/)
 - [spectacle](https://www.spectacleapp.com)
 
-### Docker
+### :whale: Docker
 - Docker config with JupyterLab
 - `docker-compose up --scale jupyterlab-cuda=1 --scale mongo=1`
 
