@@ -1,7 +1,7 @@
-ARG BASE_IMAGE=nvidia/cuda:12.1.0-cudnn8-devel-ubuntu20.04
+ARG BASE_IMAGE=nvidia/cuda:12.1.0-cudnn8-devel-ubuntu22.04
 FROM ${BASE_IMAGE}
 
-ARG PYTHON=python3.9
+ARG PYTHON=python3.11
 ARG REQUIREMENTS_FILE=requirements.txt
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -35,6 +35,8 @@ RUN apt-get update \
         ca-certificates \
         bzip2 \
         git \
+        sqlite3 \
+        libsqlite3-dev \
     && add-apt-repository -y ppa:deadsnakes/ppa \
     && apt-get install --no-install-recommends -y \
         ${PYTHON}-dev \
@@ -56,7 +58,7 @@ ENV PATH ${DEFAULT_ENV}:${PATH}
 RUN python -m pip install --upgrade pip wheel \
     && python -m pip install -r requirements.txt
 
-# Dell Inp
+# Dell Insp
 # RUN python -m pip install numpy --pre torch torchvision --force-reinstall --index-url https://download.pytorch.org/whl/nightly/cu118
 
 CMD ["jupyter-lab",  "--allow-root", "--port=8888", "--ip=0.0.0.0"]
